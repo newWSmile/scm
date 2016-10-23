@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.itcast.scm.dao.AccountMapper">
+    <resultMap type="cn.itcast.scm.entity.Account" id="accountResultMap">
+        <id property="accId" column="acc_id" jdbcType="INTEGER" />
+        <result property="accLogin" column="acc_login" jdbcType="VARCHAR" />
+        <result property="accName" column="acc_name" jdbcType="VARCHAR" />
+        <result property="accPass" column="acc_pass" jdbcType="VARCHAR" />
+
+    </resultMap>
+    <!--用户登录的sql语句-->
+     <select id="login" parameterType="cn.itcast.scm.entity.Account" resultMap="accountResultMap">
+        SELECT * FROM account WHERE acc_login=#{accLogin} and acc_pass = #{accPass}
+     </select>
+
+</mapper>
